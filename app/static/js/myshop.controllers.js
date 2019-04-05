@@ -249,19 +249,20 @@ angular.module("myshop")
 	})
 
 	.controller('dev_servCtrl', function($scope){
+		$scope.device = "";
+		$scope.f = "";
+		
 		$scope.$on("loaded",function(res){
 			//Show first tab if no tab is active
 			if($scope.cat)
 				setTimeout(function(){$scope.setModule($scope.cat);},50);
 			else 
 				setTimeout(function(){if(! $(".ui-tabs-nav .ui-tabs-active").length)$(".ui-tabs-nav li:first-child a").click();},50);
-
-			// Reload data every 20 min
-			setInterval(function(){$scope.$root.$broadcast("reload");}, 2*60*1000);
 		});
 
-		$scope.device = "";
-		$scope.f = "";
+		// Reload data every 2 min
+		setInterval(function(){$scope.$root.$broadcast("reload");}, 2*60*1000);
+
 		
 	})
 
