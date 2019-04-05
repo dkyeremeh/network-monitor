@@ -65,7 +65,8 @@ angular.module("myshop")
 			res += hours ? hours + "h " : "";
 
 			var minutes = Math.round( afterHours/ 60);
-			res += minutes ? minutes + "m " : "";
+			res += minutes ? minutes + "m " : "0m";
+			
 
 			return res;
 		};
