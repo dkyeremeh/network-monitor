@@ -40,7 +40,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('dekyfin','$2x$07$19916786fd659b7869426uMPTYUBr3opS55RIoK255v69ZSsROebq','system','system','','2017-04-24 15:31:32'),('netmon','$2x$07$70732a16f0d85463274aaOTOIYzWsiFofVHXLzd/rFaCOwV8HL7Um','system','admin','','','2019-04-05 15:33:11');
+INSERT INTO `users` VALUES ('dekyfin','$2x$07$19916786fd659b7869426uMPTYUBr3opS55RIoK255v69ZSsROebq','system','system','','','2017-04-24 15:31:32'),('netmon','$2x$07$70732a16f0d85463274aaOTOIYzWsiFofVHXLzd/rFaCOwV8HL7Um','system','admin','','','2019-04-05 15:33:11');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

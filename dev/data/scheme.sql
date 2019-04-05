@@ -131,7 +131,6 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `username` varchar(30) NOT NULL,
   `password` varchar(90) NOT NULL,
-  `organisation` varchar(30) NOT NULL,
   `module` varchar(30) NOT NULL,
   `role` varchar(30) NOT NULL,
   `email` varchar(40) NOT NULL,
