@@ -9,7 +9,7 @@
     "grunt-contrib-watch": "0.5.x",
     "load-grunt-tasks": "^3.5.2"
   },
-  "description": "myshopgh.com",
+  "description": "Network device and service monitor",
   "main": "Gruntfile.js",
   "dependencies": {},
   "scripts": {

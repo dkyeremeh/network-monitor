@@ -8,12 +8,9 @@
 	<link type="image/png" href="{$SITE_INFO.static_base}/img/favicon.png" rel="shortcut icon" />
 	<script type="text/javascript" src="{$SITE_INFO.static_base}/js/min.js"></script>
 	
-	<meta property="al:android:url" content="myshopgh://web/">
-	<meta property="al:android:package" content="com.myshopgh.mobile.app">
-	<meta property="al:android:app_name" content="Myshop Ghana">
+	<meta property="al:android:app_name" content="Network Monitor">
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="{$page_title|default:$title}" />
-	<link rel="alternate" href="android-app://com.myshopgh.mobile.app/myshopgh/web/" />
 	
 	{if $description}
 	<meta name="description" content="{$description}">

@@ -248,10 +248,10 @@ angular.module("myshop")
 		
 	})
 
-	.controller('dev_servCtrl', function($scope){
+	.controller('dev_servCtrl', function($scope, $interval){
 		$scope.device = "";
 		$scope.f = "";
-		
+
 		$scope.$on("loaded",function(res){
 			//Show first tab if no tab is active
 			if($scope.cat)
@@ -261,7 +261,7 @@ angular.module("myshop")
 		});
 
 		// Reload data every 2 min
-		setInterval(function(){$scope.$root.$broadcast("reload");}, 2*60*1000);
+		$interval(function(){$scope.$emit("reload");}, 2*60*1000);
 
 		
 	})

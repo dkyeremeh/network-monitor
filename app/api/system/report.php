@@ -66,7 +66,7 @@ function fetch($values){
 
 	//Append the data for the $to time
 	$data[] = [
-		"at" => $to ? $to : date("Y-m-d h:i:s"),
+		"at" => $to ? $to : date("Y-m-d H:i:s"),
 		"status" => $data[ count($data) - 1]["status"]
 	];
 

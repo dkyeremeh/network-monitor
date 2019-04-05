@@ -62,4 +62,4 @@ $msg_extra
 
 $SITE_INFO[base]/$module/reset/$token
 MSG;
-Notification\Email::send($user["email"], "Password Reset | Myshop Ghana", Parsedown::instance()->text($msg) );
+Notification\Email::send($user["email"], "Password Reset | Network Monitor", Parsedown::instance()->text($msg) );

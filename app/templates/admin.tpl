@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8" />
 	{literal}
-	<title ng-bind-template="{{title}} | MYSHOP {{account.module|uppercase}}">Home | MYSHOP ADMIN</title>
+	<title ng-bind-template="{{title}} | Network Monitor {{account.module|uppercase}}">Home | Network Monitor </title>
 	{/literal}
 	<link type="image/png" rel="icon" href="{$SITE_INFO.static_base}/img/favicon.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
