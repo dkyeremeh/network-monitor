@@ -32,25 +32,6 @@ angular.module("myshop")
 		}
 		$scope.logout= accountServ.logout;
 	
-	
-		//Storage data accessible in all areas
-		$scope.storage = new StorageData("storage");
-		var storageFields = ["categories", "locations", "options"];
-	
-		var loadStorageData = function(field){
-			if(!$scope.storage[field]){
-				loadServ.load("/api/data/" + field, function(res){
-					$scope.storage.set(field, res.data);
-					$scope.$broadcast(field +"StorageDataLoaded");
-				});
-			}
-			else
-				$scope.$broadcast(field +"StorageDataLoaded");
-		}
-		//Fetch data for each storageFields
-		for(var i=0; storageFields[i]; i++)
-			loadStorageData(storageFields[i]);
-
 		$scope.newData = {};
 		$scope.siteInfo = siteInfo;
 
