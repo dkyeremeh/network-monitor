@@ -3,7 +3,7 @@
 dir=`dirname $0`
 timestamp=$(date +"%y%m%d%H%M%S")
 
-cd $dir/../
+cd $dir/../../
 #get db variables
 
 host=$(sed -ne "s/.*DB_HOST.*\s*,\s*[\'\"]\(.*\)[\'\"].*/\1/p" config.php )

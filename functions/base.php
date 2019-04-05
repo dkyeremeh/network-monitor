@@ -31,7 +31,7 @@ function load_smarty(){
 		
 		$smarty = new Smarty;
 		$smarty->setTemplateDir("$GEN_ROOT/app/templates/");
-		$smarty->setCompileDir("$GEN_ROOT/compiled");
+		$smarty->setCompileDir("$GEN_ROOT/data/compiled");
 		$smarty->setCacheDir("$GEN_ROOT/data/cache/smarty");
 		$smarty->setConfigDir("$GEN_ROOT/modules/smarty/config");
 		$smarty->addPluginsDir("$GEN_ROOT/functions/smarty_plugins");
