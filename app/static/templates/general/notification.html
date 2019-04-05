@@ -1,0 +1,42 @@
+<div id="notification_template" ng-controller="notificationCtrl" no-autoload>
+	<form id="notification_form" class="ajax-form" action="/api/general/notification/update" onsuccess="refresh()">
+		<nav class="tool-nav">
+			<a class="bg-red color-white" ng-click="submit('delete')">Delete</a>
+			<select name="status" ng-model="formData.status" ng-change="submit('status')">
+				<option value="">Mark As</option>
+				<option value="1">Unread</option>
+				<option value="2">Read</option>
+			</select>
+		</nav>
+		<div class="pl0 pr0">
+			<div class="small-content" ng-if="notification.length==0">
+				You don't have any notifications yet
+			</div>
+			<div ng-if="notification.length">
+				<div class="admin-notice notice-status-{{n.status}}" ng-repeat="n in notification | orderBy : '-delivery_time' | orderBy: 'status' ">
+					<label class="checkbox">
+						<input type="checkbox" name="notices[]" value="{{n.id}}">
+						<span></span>
+					</label>
+					<h5 class="admin-notice-title">
+						<a ng-click="viewNotice(n)" data-subref="n{{n.id}}">{{n.title}}</a>
+					</h5>
+					<div class="admin-notice-msg" >{{n.msg}}</div>
+					<div class="admin-notice-time">{{n.delivery_time|simpleTime}}</div>
+				</div>
+			</div>
+		</div>
+
+		<input type="hidden" name="action" />
+		<button id="submit_button" class="hide" type="submit"></button>
+	</form>
+
+	<div id="view" class="modal hide">
+		<h3>{{activeNotice.title}}</h3>
+		<div class="br" markdown="activeNotice.msg"></div>
+		<div class="br">
+			<a class="button color-white bg-red" ng-click="changeStatus(activeNotice.id, 'x')" data-click="#view .popup .close">Delete</a> &nbsp; 
+			<a class="button" ng-click="changeStatus(activeNotice.id, 1)">Mark as Unread</a>
+		</div>
+	</div>
+</div>

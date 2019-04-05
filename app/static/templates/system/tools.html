@@ -1,0 +1,90 @@
+<div ng-controller="systemToolsCtrl">
+	<div class="tabs">
+		<ul class="capitalize">
+			<li ng-repeat="(key, module) in data.tools|groupBy:'module'">
+				<a ng-click="setModule(key)" href="#tools" data-subref="{{key}}">{{key}}</a>
+			</li>
+		</ul>
+		<div id="tools">
+			<div class="tool-nav">
+				<a class="ion-ios-plus-outline" ng-click="addTool(m)" >New Tool</a>
+			</div>
+			<div class="content">
+				<table class="data">
+					<tr>
+						<th class="text-left">Tool</th>
+						<th>User Roles</th>
+						<th>Action</th>	
+					</tr>
+					<tr ng-repeat="tool in data.tools|filter:{module:m}:true|orderBy:'title'">
+						<td class="capitalize">
+							{{tool.title}} <br/>
+							<span class="color-888 italic">{{tool.tool}}</span>
+						</td>
+						<td>
+							<div class="clear hover-color-red" ng-repeat="access in data.access|filter:{tool:tool.tool,module:m}:true">
+								<i class="icon ion-android-close float-right color-red" ng-click="delete(access.id, 'access')"></i>
+								{{access.role}}
+							</div>
+							<a class="color-green" ng-click="addUser(tool)">Add<i class="icon ion-android-add"></i></a>
+						</td>
+						<td class="text-center">
+							<i class="icon btn ion-edit color-orange" ng-click="edit(tool,'tool')" title="Edit"></i>
+							<i class="icon btn ion-ios-trash color-red" ng-click="delete(tool.tool, 'tool')" title="Delete"></i>
+						</d>	
+					</tr>
+				</table>
+
+			</div>
+		</div>
+	</div>
+
+	
+	<form id="add_tool" class="modal hide" ng-submit="create('tool')">
+		<h4>New Tool</h4>
+		<label class="form-group">
+			<span class="form-caption">ID</span>
+			<input type="text" ng-model="newData.tool" />
+		</label>
+		<label class="form-group">
+			<span class="form-caption">Title</span>
+			<input type="text" ng-model="newData.title" />
+		</label>
+		<label class="form-group">
+			<span class="form-caption">Order</span>
+			<input type="number" ng-model="newData.order" />
+		</label>
+		<label class="form-group">
+			<span class="form-caption">Icon Class</span>
+			<input type="text" ng-model="newData.icon_class" />
+		</label>
+		<div class="br">
+			<button type="submit" class="full-width">Add Tool</button>
+		</div>
+	</form>
+
+
+
+	
+	<form id="edit_tool" class="modal hide" ng-submit="save('tool')">
+		<h4>Edit Tool ({{editData.tool}})</h4>
+		<label class="form-group">
+			<span class="form-caption">ID</span>
+			<input type="text" ng-model="editData.tool" />
+		</label>
+		<label class="form-group">
+			<span class="form-caption">Title</span>
+			<input type="text" ng-model="editData.title" />
+		</label>
+		<label class="form-group">
+			<span class="form-caption">Icon Class</span>
+			<input type="text" ng-model="editData.icon_class" />
+		</label>
+		<div>
+			<button type="submit" class="full-width">Save Changes</button>
+		</div>
+	</form>
+
+
+
+</div>

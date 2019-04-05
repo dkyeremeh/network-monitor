@@ -1,0 +1,58 @@
+*{margin: 0;box-sizing: border-box;}
+body{
+	font: 10pt serif, "Times New Roman", Times, Georgia;
+	line-height: 1.3;
+	color: #000;
+}
+#content{
+	background: #fff;
+}
+h1,h2,h3,h4{
+	margin: 0;
+	margin-bottom: 0.4em;
+	font-weight: bold;
+}
+h1 {
+	font-size: 24pt;
+}
+
+h2 {
+	font-size: 14pt;
+}
+
+#content a[href]:after{
+	content:  " ( https://myshopgh.com" attr(href) ")";
+	font-size: 80%;
+}
+#content  a[href^="http"]:after{
+	content: " (" attr(href) ")";
+}
+
+#content a[href^="#"]:after{
+	display: none;
+}
+
+p a{
+word-wrap: break-word;
+}
+.print-order{
+	width: 196pt;
+	max-width: 100%;
+	border: 1px dashed #111;
+	border-width: 0 1px 1px 0;
+	float: left;
+	padding:  15pt 15pt;
+	page-break-inside: avoid;
+}
+.print-order .header{
+	text-align: center;
+}
+.print-order h1{
+	font-size: 16pt;
+}
+.print-order h2{
+	font-size: 13pt;
+}
+.print-order img{
+	vertical-align: middle;
+}

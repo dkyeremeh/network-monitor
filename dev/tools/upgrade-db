@@ -1,0 +1,44 @@
+#!/bin/bash
+
+dir=`dirname $0`
+timestamp=$(date +"%y%m%d%H%M%S")
+
+cd $dir/../
+#get db variables
+
+host=$(sed -ne "s/.*DB_HOST.*\s*,\s*[\'\"]\(.*\)[\'\"].*/\1/p" config.php )
+db=$(sed -ne "s/.*DB_USER.*\s*,\s*[\'\"]\(.*\)[\'\"].*/\1/p" config.php )
+pass=$(sed -ne "s/.*DB_PASS.*\s*,\s*[\'\"]\(.*\)[\'\"].*/\1/p" config.php )
+user=$(sed -ne "s/.*DB_USER.*\s*,\s*[\'\"]\(.*\)[\'\"].*/\1/p" config.php )
+
+#dump scheme
+bash dev/tools/dump-db-scheme
+
+#Check if scheme has changed
+diff data/db/scheme.sql dev/data/scheme.sql > /dev/null
+
+
+if [ $? = 0 ]
+then
+	echo "DB is up to date"
+	exit
+fi
+
+#dump data
+echo dumping data
+
+mysqldump -h$host -u $user -p$(echo $pass)  --no-create-info $db | sed 's/ AUTO_INCREMENT=[0-9]*\b//g' >> data/db/data$timestamp.sql
+
+echo data dumped successfully
+
+#Upload new scheme
+echo uploading new scheme
+mysql -h$host -u $user -p$(echo $pass) $db < dev/data/scheme.sql
+echo new scheme uploaded
+
+
+#upload dumped data
+echo uploading data
+mysql -h$host -u $user -p$(echo $pass) $db < data/db/data$timestamp.sql
+echo data uploaded successfully
+echo DB has been upgraded successfully

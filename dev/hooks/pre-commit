@@ -1,0 +1,31 @@
+#!/bin/bash
+
+dir=`dirname $0`
+
+cd $dir/../../
+
+#exit if the scheme is staged -- Meaning it's probably being merged or was manually modified
+staged=$(git diff --name-only --cached | grep dev/data/scheme.sql)
+
+if [ $staged ]
+then
+	exit
+fi
+
+#get db variables
+
+host=$(sed -ne "s/.*DB_HOST.*\s*,\s*[\'\"]\(.*\)[\'\"].*/\1/p" config.php )
+db=$(sed -ne "s/.*DB_USER.*\s*,\s*[\'\"]\(.*\)[\'\"].*/\1/p" config.php )
+pass=$(sed -ne "s/.*DB_PASS.*\s*,\s*[\'\"]\(.*\)[\'\"].*/\1/p" config.php )
+user=$(sed -ne "s/.*DB_USER.*\s*,\s*[\'\"]\(.*\)[\'\"].*/\1/p" config.php )
+
+
+#dump data
+mysqldump -h$host -u $user -p$(echo $pass) --skip-add-locks --skip-comments --skip-disable-keys --skip-set-charset  --no-data $db | sed 's/ AUTO_INCREMENT=[0-9]*\b//g' > dev/data/scheme.sql
+
+#sed -i -e 's/-- Dump completed on.*/-- Pre-commit dump/g' dev/data/scheme.sql
+
+
+git add dev/data/scheme.sql
+
+ 

@@ -1,0 +1,195 @@
+@media screen and (max-width:991px){
+	/*------------------------------
+	# STYLE.CSS
+	-------------------------------*/
+
+	#sidebar{
+		text-align: center;
+		margin-top: 2em;
+	}
+
+	input:not([type=button]):not([type=submit]),
+	select,
+	textarea{
+		width: 100%;
+		border-radius: 0;
+		border-width: 0 0 1px 0;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+		background-color: transparent;
+		text-align: inherit;
+	}
+
+	#item_search{
+		position: absolute;
+		display: none;
+		left: 0;
+		top: 0;
+		width: 100%;
+		text-align: left;
+	}
+	.search-visible #item_search{
+		display: block;
+	}
+	#item_search .search-wrap{
+		display: table;
+		width: 100%;
+		padding: 0 2rem;
+	}
+	#item_search .search-wrap>*{
+		display: table-cell;
+		vertical-align: middle;
+	}
+	#item_search input{
+		width: 100%;
+		border-radius: 0;
+		border-width: 0 0 1px 0;
+	}
+	#item_search .search-button{
+		border: 0;
+	}
+	#item_search .search-button i{
+		padding: 0 1rem;
+	}
+	#item_search .advanced-search{
+		display: block;
+		position: relative;
+		box-shadow: none;
+		margin: 0;
+		max-height: calc(100vh - 6.5em);
+		overflow: auto;
+	}
+	/*	Navigation	*/
+
+	#secondary{
+		left: 0;
+		transform: translate(-100%,0);
+		transform: translate3d(-100%,0,0);
+	}
+	.catsbar-toggle{
+		display: inline-block;
+		font-size: 20px;
+		font-size: 1.5em;
+		width: 15px;
+		cursor: pointer;
+		transition: all 0.4s;
+		vertical-align: middle;
+		text-align: center;
+	}
+	.client-ionic .catsbar-toggle{
+		padding: 0 1.5rem;
+	}
+	.navbar .navbar-brand{
+		position: relative;
+		left: -0.6rem;
+	}
+	#masthead .navbar{
+		padding: 1rem 0;
+	}
+	.navbar-nav li.hover ul{
+		display: list-item;
+		padding: 0;
+	}
+	.navbar .navbar-nav{
+		max-height: calc(100vh - 6.5em);
+		overflow: auto;
+		white-space: nowrap;
+	}
+	.navbar .navbar-nav a{
+		border-bottom: 1px solid rgba(0,0,0,0.05);
+		padding: 16px 20px;
+		border-right: 0;
+	}
+	.navbar-nav .sub-menu{
+		position: static;
+		text-align: left;
+	}
+
+	.navbar-brand{
+		float: left;
+	}
+	.navbar-toggle,
+	.search-toggle{
+		display: block;
+	}
+
+	/*------------------------------
+	# SHOP.CSS
+	-------------------------------*/
+
+	.search-filters-collapse,
+	#shop_listing_options .options-collapse{
+		display: none;
+	}
+	/* SEARCH PAGE */
+	#search_filters ul:not(.filter-option-selected){
+		display: none;
+	}
+	#search_filters .filter-options-wrap:hover ul,
+	#search_filters  ul:hover{
+		display: list-item;
+	}
+	#search_filters .filter-options-title i,
+	#shop_listing_options .options-title i{
+		display: inline-block;
+	}
+
+	/*------------------------------
+	# ADMIN.CSS
+	-------------------------------*/
+	#admin #navbar .icon{
+		display: inline-block;
+	}
+
+	#admin_menu{
+		display: none;
+		width: 80%;
+		min-width: 17.143rem;
+		position: fixed;
+		top: 2em;
+		height: 100%;
+		z-index: 2;
+	}
+	#admin_menu:before,
+	#admin_menu:after{
+		content: "";
+		position:fixed;
+		top:0px;
+		width: 100vw;
+		background: rgba(0,0,0,0.3);
+		height: 100%;
+		z-index: -1;
+	}
+	#admin_menu:after{
+		background: #eee;
+		width: 80%;
+		min-width: 17.143rem;
+	}
+	#customer #admin_menu:after,
+	#customer #admin_menu:before{
+		content: none;
+	}
+	#admin_content{
+		margin-left: 0;
+	}
+	#admin .ui-tabs-nav{
+		text-align: center;
+	}
+	#admin .ui-tabs-nav a:hover{
+		background-color: transparent;
+		color: #c22;
+	}
+	#admin .tool-nav input{
+		width: 100%;
+	}
+
+	#customer #admin_menu{
+		display: none;
+	}
+
+	@media (min-width: 800px){
+		body{
+			font-size: 17px;
+		}
+	}
+}

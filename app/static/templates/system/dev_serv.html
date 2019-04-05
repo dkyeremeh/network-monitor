@@ -1,0 +1,143 @@
+<div ng-controller="dev_servCtrl">
+	<div class="tabs">
+		<ul class="capitalize">
+			<li>
+				<a ng-click="device = '' " href="#dev_serv" data-subref="all">All</a>
+			</li>
+			<li>
+				<a ng-click="device = 1" href="#dev_serv" data-subref="dev">Devices</a>
+			</li>
+			<li>
+				<a ng-click="device = 0" href="#dev_serv" data-subref="serv">Services</a>
+			</li>
+			<li>
+				<a ng-click="device = 0" class="ion-ios-plus-outline" href="#add_entry" data-subref="serv">Add</a>
+			</li>
+		</ul>
+		<div id="dev_serv">
+			<div class="tool-nav">
+				<input ng-model="f" placeholder="Filter">
+				<!-- <a class="ion-ios-plus-outline" ng-click="add('entry')" >Add</a> -->
+			</div>
+			<div class="content overflow-auto">
+				<table class="data">
+					<tr>
+						<th class="text-left">Name</th>
+						<th>Category</th>
+						<th>Status</th>
+						<th>Action</th>	
+					</tr>
+					<tr ng-repeat="entry in data|filter:{device:device}|filter:f">
+						<td class="capitalize bold" ng-click="edit(entry,'entry')">{{entry.name}}</td>
+						<td>{{ entry.category }}</td>
+						<td>
+							<span class="bg-green color-white" ng-if="entry.status == 1">online</span>
+							<span class="bg-red color-white" ng-if="entry.status == 0">offline</span>
+						</td>
+						<td class="text-center">
+							<i class="icon btn ion-edit color-orange" ng-click="edit(entry,'entry')" title="Edit"></i>
+							<i class="icon btn ion-ios-trash color-red" ng-click="delete( entry.id )" title="Delete"></i>
+						</td>	
+					</tr>
+				</table>
+
+			</div>
+		</div>
+
+		<form id="add_entry" class="content" ng-submit="create()">
+
+			<div class="row">
+				<label class="form-group col-xs-8">
+					<span class="form-caption">Name</span>
+					<input type="text" ng-model="newData.name" required/>
+				</label>
+				<label class="form-group col-xs-4">
+					<span class="form-caption">Type</span>
+					<select ng-model="newData.device" required >
+						<option value="0">Service</option>
+						<option value="1">Device</option>
+					</select>
+				</label>
+
+				<label class="form-group col-xs-7">
+					<span class="form-caption">Category (Select)</span>
+					<select ng-model="newData.category" >
+						<option ng-repeat="(cat,category) in data|orderBy:'category'|groupBy:'category'" value="{{cat}}">{{cat}}</option>
+						<option value="new">New</option>
+					</select>
+				</label>
+				<label class="form-group col-xs-5">
+					<span class="form-caption">Category (Manual)</span>
+					<input type="text" ng-model="newData.newCategory"  ng-disabled="newData.category != 'new' "/>
+				</label>
+				<label class="form-group col-xs-8">
+					<span class="form-caption">Address</span>
+					<input type="text" ng-model="newData.address" required />
+				</label>
+				<label class="form-group col-xs-4">
+					<span class="form-caption">Port</span>
+					<input type="text" ng-model="newData.port" ng-disabled="newData.device == '1' " />
+				</label>
+				<label class="form-group col-xs-12">
+					<span class="form-caption">Description</span>
+					<textarea type="text" ng-model="newData.description"></textarea>
+				</label>
+
+			</div>
+			<div>
+				<button type="submit" class="full-width">Add</button>
+			</div>
+		</form>
+
+	</div>
+
+	
+	
+	<form id="edit_entry" class="modal hide" ng-submit="save()">
+		<h4>Edit Device/Service</h4>
+
+		<div class="row">
+			<label class="form-group col-xs-8">
+				<span class="form-caption">Name</span>
+				<input type="text" ng-model="editData.name" required/>
+			</label>
+			<label class="form-group col-xs-4">
+				<span class="form-caption">Type</span>
+				<select ng-model="editData.device" required >
+					<option value="0">Service</option>
+					<option value="1">Device</option>
+				</select>
+			</label>
+
+			<label class="form-group col-xs-6">
+				<span class="form-caption">Category (Select)</span>
+				<select ng-model="editData.category" >
+					<option ng-repeat="(cat,category) in data|orderBy:'category'|groupBy:'category'" value="{{cat}}">{{cat}}</option>
+					<option value="new">New</option>
+				</select>
+			</label>
+			<label class="form-group col-xs-6">
+				<span class="form-caption">Category (Manual)</span>
+				<input type="text" ng-model="editData.newCategory"  ng-disabled="editData.category != 'new' "/>
+			</label>
+			<label class="form-group col-xs-8">
+				<span class="form-caption">Address</span>
+				<input type="text" ng-model="editData.address" required />
+			</label>
+			<label class="form-group col-xs-4">
+				<span class="form-caption">Port</span>
+				<input type="text" ng-model="editData.port" ng-disabled="editData.device == '1' " />
+			</label>
+			<label class="form-group col-xs-12">
+				<span class="form-caption">Description</span>
+				<textarea type="text" ng-model="editData.description"></textarea>
+			</label>
+
+		</div>
+		<div>
+			<button type="submit" class="full-width">Add</button>
+		</div>
+	</form>
+
+
+</div>

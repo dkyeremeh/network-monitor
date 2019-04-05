@@ -1,0 +1,108 @@
+<div>
+	<div class="tabs">
+		<ul>
+			<li><a href="#users_list">All Users</a></li>
+		</ul>
+		
+		
+		<!-- List User -->
+		<div id="users_list">
+			<nav class="tool-nav">
+				<a data-toggle="#add_user">Add User</a>
+			</nav>
+			<div class="content overflow-auto">
+				<table class="data text-left">
+					<tr>
+						<th>Username</th>
+						<th>Role</th>
+						<th>Action</th>
+					</tr>
+					<tr ng-repeat="user in data.users|orderBy:'username'">
+						<td>{{user.username}}</td>
+						<td>{{user.role}}</td>
+						<td class="text-center">
+							<i class="icon ion-edit color-orange" ng-click="edit(user,'user')"></i>
+							<i class="icon ion-ios-trash color-red" ng-click="delete(user.username)"></i>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<!-- End List user -->
+		
+	</div>
+	
+	
+	<div id="add_user" class="modal hide">
+		<form ng-submit="create()">
+			<h3>Create User</h3>
+			<label class="form-group">
+				<div class="form-caption required">Username</div>
+				<input ng-model="newData.username" required/>
+			</label>
+			<label class="form-group">
+				<div class="form-caption">Email Address</div>
+				<input type="email" ng-model="newData.email"/>
+			</label>
+			<div class="row">
+				<label class="form-group col-sm-6">
+					<div class="form-caption required">Password</div>
+					<input type="password" ng-model="newData.password" required/>
+				</label>
+				<label class="form-group col-sm-6">
+					<div class="form-caption required">Confirm Password</div>
+					<input type="password" ng-model="newData.repassword" required/>
+				</label>
+				<div class="col-xs-12 color-red" ng-show="newData.password != newData.repassword">
+					<i class="icon ion-android-alert"></i> Passwords do not match
+				</div>
+			</div>
+			<label class="form-group">
+				<div class="form-caption required">Role</div>
+				<select  ng-model="newData.role" ng-options="tool.role as tool.role for tool in data.tools" required></select>
+			</label>
+			<div class="form-group br">
+				<input type="submit" value="Save" />
+			</div>
+		</form>
+	</div>
+			
+			
+			
+	<!-- Edit user -->
+	<div id="edit_user" class="modal hide">
+		<form ng-submit="save()">
+			<h3>Edit '{{editData.username}}'</h3>
+			<label class="form-group">
+				<div class="form-caption">Email Address</div>
+				<input type="email" ng-model="editData.email"/>
+			</label>
+			<label class="form-group">
+				<div class="form-caption required">Role</div>
+				<select  ng-model="editData.role" ng-options="tool.role as tool.role for tool in data.tools|filter:{module:editData.module}:true" required></select>
+			</label>
+			<label>
+				<input type="checkbox" ng-model="editData.editPassword" />
+				<span>Modify Password</span>
+			</label>
+			<div class="row" ng-show="editData.editPassword">
+				<label class="form-group col-sm-6">
+					<div class="form-caption">New Password</div>
+					<input type="password" ng-model="editData.password"/>
+				</label>
+				<label class="form-group col-sm-6">
+					<div class="form-caption">Confirm Password</div>
+					<input type="password" ng-model="editData.repassword"/>
+				</label>
+				<div class="col-xs-12 color-red" ng-show="editData.password != editData.repassword">
+					<i class="icon ion-android-alert"></i> Passwords do not match
+				</div>
+			</div>
+			<div class="form-group br">
+				<input type="submit" value="Save" />
+			</div>
+		</form>
+	</div>
+	<!-- End edit user -->
+
+</div>

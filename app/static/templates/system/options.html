@@ -1,0 +1,48 @@
+<div ng-controller="optionsCtrl" no-autoload>
+	<form id="add_entry" ng-submit="save(data)">
+
+		<div class="row">
+			<div class="form-group col-xs-8">
+
+				<div class="form-caption br">Notification Channel(s)</div>
+				
+				<label class="block">
+					<input type="checkbox" ng-model="data.notify.email"/>
+					Email
+				</label>
+				<label class="block">
+					<input type="checkbox" ng-model="data.notify.sms"/>
+					SMS
+				</label>
+			</div>
+
+			<label class="form-group col-xs-12">
+				<span class="form-caption">Notification Email</span>
+				
+				<input type="email" ng-model="data.notify.alertEmail" ng-required="data.notify.email"/>
+			</label>
+
+			<label class="form-group col-xs-12">
+				<span class="form-caption">Notification Phone</span>
+				<input type="tel" ng-model="data.notify.alertPhone"  ng-required="data.notify.sms" ng-disabled="!data.notify.sms"/>
+			</label>
+
+
+			<label class="form-group col-sm-6">
+				<span class="form-caption">Infobip SMS Username</span>
+				<input type="text" ng-model="data.infobip.username" ng-disabled="!data.notify.sms" ng-required="data.notify.sms"/>
+			</label>
+
+			<label class="form-group col-sm-6">
+				<span class="form-caption">Infobip SMS Password</span>
+				<input type="password" ng-model="data.infobip.password" ng-disabled="!data.notify.sms" ng-required="data.notify.sms"/>
+			</label>
+			
+		</div>
+		<div>
+			<button type="submit">Save</button>
+		</div>
+	</form>
+
+
+</div>

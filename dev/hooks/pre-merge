@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+dir=`dirname $0`
+
+cd $dir/../../
+
+
+#exit if database scheme did not change in last commit
+changed=$(git diff --name-only HEAD^ HEAD | grep "data/db/scheme.sql")
+
+echo running pre merge. $changed changed > ignore/pre-merge.log

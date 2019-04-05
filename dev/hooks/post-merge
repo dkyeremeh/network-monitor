@@ -1,0 +1,10 @@
+#!/bin/bash
+
+exit
+dir=`dirname $0`
+timestamp=$(date +"%y%m%d%H%M%S")
+
+cd $dir/../../
+
+#Upgrade db if any changes were made
+bash dev/tools/upgrade-db

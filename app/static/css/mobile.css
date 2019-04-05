@@ -1,0 +1,60 @@
+@media screen and (max-width:720px){
+	/*------------------------------
+	# STYLE.CSS
+	-------------------------------*/
+
+	.mobile-menu-visible .mobile-menu-hide,
+	.search-visible .search-hide{
+		display: block;
+	}
+
+	#titlebar{
+		font-size: 12px;
+	}
+	@media (max-width: 355px){
+		#titlebar .menu a, #titlebar .menu span{
+			padding: 0 1rem;
+			font-size: 1.1rem;
+		}
+		.navbar-brand .brand-text{
+			font-size: 0.9em;
+		}
+		.navbar .icon{
+			padding: 0 0.3em;
+		}
+		*{
+			transition: none !important;
+			-webkit-transition: none !important;
+			-moz-transition: none !important;
+		}
+	}	
+	@media (max-width: 320px){
+		body{
+			font-size: 14px;
+		}
+	}
+	@media (max-width: 315px){
+		.navbar-brand .brand-text{
+			display: none;
+		}
+	}
+
+	/*------------------------------
+	# ADMIN.CSS
+	-------------------------------*/
+	#merchant_order_table>tbody>tr>td{
+		padding: 0;
+	}
+	#merchant_order_table .more-info{
+		display: none;
+	}
+	#merchant_order_table table tr:hover{
+		background-color: rgba(0,0,0,0.04);
+	}
+	#merchant_order_table table tr:hover .more-info{
+		display: table-cell;
+	}
+	#merchant_order_table table tr:hover .little-info{
+		display: none;
+	}
+}

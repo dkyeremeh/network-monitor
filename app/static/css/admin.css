@@ -1,0 +1,581 @@
+#admin{
+	background: #fff;
+	/*background: #eee;*/
+}
+#admin .btn{
+	padding: 0.5rem;
+	cursor: pointer;
+}
+#admin .button,
+#admin button[type=submit],
+#admin input[type=submit],
+#admin input[type=button]{
+	background: #296;
+}
+#admin a{
+	display: inline-block;
+	cursor: pointer;
+	/*color: inherit;*/
+}
+#admin a:not(.color){
+	color: inherit;
+}
+
+#admin [markdown] p{
+	white-space: pre-line;
+}
+#admin [markdown] a{
+	color: #FF6D22;
+}
+#admin a.button{
+	color: white;
+}
+#admin ul, #admin ol{
+	margin: 0;
+}
+#admin a:hover{
+	text-decoration: none;
+}
+#admin #navbar{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background: white;
+	z-index: 3;
+}
+#admin #navbar a,
+#admin #navbar span{
+	border: 0;
+	padding: 0.5em 1rem;
+}
+#admin #navbar .icon{
+	font-size: 2em;
+	display: none;
+	padding: 0;
+	line-height: normal;
+	vertical-align: middle;
+}
+#admin_workarea{
+position: relative;
+top: 2.5em;
+}
+#admin_title{
+	display: inline-block;
+}
+#admin_menu{
+padding-top: 2rem;
+list-style-type:none;
+position:absolute;
+left:0px;
+width: 17.143rem;
+z-index: 1;
+}
+#customer #admin_menu{
+padding-top: 0;
+position: static;
+width: 100%;
+}
+#admin_menu a{
+position: relative;
+color:#666;
+padding:0 1.5rem;
+margin-bottom: 0.5rem;
+display:block;
+}
+#admin_menu a:hover, #admin_menu a.active{
+background:#c22;
+color: white;
+}
+#customer #admin_menu a:hover, #customer #admin_menu a.active{
+background:#ddd;
+color: inherit;
+}
+#admin_menu a i{
+font-size: 2em;
+padding-right: 0.5rem;
+vertical-align: middle;
+}
+#admin_menu .more{
+display: none;
+position: absolute;
+left: 85px;
+top:0;
+z-index: 1;
+padding: 0.5rem;
+white-space: nowrap;
+background: #fff;
+border-radius: 0.5rem;
+box-shadow:0 0 0.8rem rgba(0, 0, 0, 0.51);
+}
+#admin_menu .more:before{
+content: " ";
+position: absolute;
+right: 100%;
+top:0;
+width:15px;
+height: 100%;
+background: url('../img/arr.png') no-repeat right 30px;
+}
+#admin_menu li:hover .more{
+display: block;
+}
+#admin_menu .more a{
+color:#666;
+padding:0.3rem 2rem;
+}
+#admin_menu .more a:hover{
+color: #c22;
+}
+#admin_content{
+background:rgba(255, 255, 255, 0.5);
+position:relative;
+margin-left: 17.143rem;
+}
+#admin ui-view{
+	padding: .5em 1em;
+}
+
+.order-status-0{
+	border: 2px solid #FF8585;
+}
+
+.tree ul, .tree ol{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+.tree-node {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 0.8rem 2rem;
+	margin:10px 0;
+}
+.tree-node .btn {
+    margin-right: 8px;
+}
+.tree-node .handles{
+	float: left;
+	margin-right: 1rem;
+}
+.popup-form .content{
+	max-width: 800px;
+}
+.button-bar{
+	margin: 1.8em 0;
+}
+/*
+#admin .tool-nav:before,
+#admin .ui-tabs-nav:before{
+	content: "";
+	position: absolute;
+	width: 1px;
+	height: 2rem;
+	top: 0;
+	background: rgba(204, 34, 34, 0.24);
+}
+*/
+#admin .ui-tabs-nav{
+	white-space: nowrap;
+	overflow: auto;
+}
+#admin .ui-tabs-nav:before{
+	margin-top: 0.5rem;
+}
+#admin .ui-tabs-nav li{
+	float: none;
+	display: inline-block;
+}
+#admin .ui-tabs-nav li.hide{
+	display: none;
+}
+#admin .ui-tabs-nav li:not(.hide){
+	display: inline-block;
+}
+#admin .ui-tabs-nav a{
+	padding: 0.5em 1rem;
+}
+#admin .ui-tabs-active a{
+	color: #c22;
+	border-bottom: 2px solid;
+}
+#admin .ui-tabs-nav a:hover{
+	color: #fff;
+	background: #c22;
+}
+#admin a:before{
+	font-size: 2rem;
+	padding-right: 0.5rem;
+	vertical-align: middle;
+}
+#admin .tool-nav{
+	position: relative;
+	margin-top: 1rem;
+	min-height: 2rem;
+	white-space: nowrap;
+	overflow: auto;
+}
+#admin .tool-nav a{
+	padding:0.25rem 1rem;
+	color: #c22;
+}
+#admin .tool-nav a.active{
+	background: #c22;
+	color: #fff;
+}
+#admin .tool-nav input,
+#admin .tool-nav select{
+	padding: 5px 1rem;
+	width: 100%;
+	border-width: 0 0 1px 0;
+}
+#admin .tool-nav select{
+	width: auto;
+	border-width: 0 0 1px;
+}
+#admin .tabs .content{
+	padding: 0;
+	margin-top: 1em;
+	overflow: hidden;
+}
+#admin h1,
+#admin h2,
+#admin h3,
+#admin h4,
+#admin h5{
+	color: #c22;
+}
+#admin #customer h1,
+#admin #customer h2,
+#admin #customer h3,
+#admin #customer h4,
+#admin #customer h5{
+	color: inherit;
+}
+#admin .ms-accordion-title{
+	background: #c44;
+	color: white;
+}
+#admin .ms-accordion-title:hover{
+	background: #c22;
+}
+#admin .ui-accordion-content{
+	background: #f1f1f1;
+}
+
+table.data{
+border-collapse:collapse;
+/*margin-bottom:40px;*/
+width: 100%;
+}
+table.data tr:nth-of-type(odd) td{
+background: rgba(0,0,0, 0.04);
+}
+table.data table tr:nth-of-type(odd){
+background: inherit;
+}
+table.data td{
+border-bottom:1px solid #eee;
+padding:0.6em 1em;
+background: rgba(255,255,255, 0.18);
+}
+table.data.plain td{
+background: inherit !important;
+}
+table.data th{
+	text-transform:capitalize;
+	font-weight:normal;
+	background:#e3e3e3;
+	background: rgba(0,0,0, 0.13);
+	border-bottom:1px solid #e3e3e3;
+	padding:0.6em 1em;
+	cursor:default;
+	text-align: left;
+	vertical-align: middle;
+}
+table.data table th,
+table.data.plain th{
+	background: inherit;
+	border-right: 1px solid #eee;
+}
+table.data table td{
+background: transparent !important;
+}
+table.data select,
+table.data input:not([type=color]),
+table.data .button{
+width: auto;
+padding: 5px;
+}
+
+
+#notices{
+position:fixed;
+left:0;
+top:2rem;
+z-index:20;
+width:100%;
+height:0;
+background:#fff;
+overflow: visible;
+/border-top:2px solid #29b;
+}
+#notices>*{
+display: table;
+position: relative;
+max-width: 30rem;
+margin: 1rem auto;
+padding: 0.5rem 2.5rem 0.5rem 1.5rem;
+border-radius: 0.3rem;
+overflow: hidden;
+background: #fff;
+text-align: center;
+box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+}
+#notices>*.failure{
+background: #ffeaea;
+}
+#notices>*.info{
+color:#666;
+}
+#notices>*.loading i{
+font-size: 2.5rem;
+vertical-align: middle;
+}
+#notices>*.success{
+background: #e5ffe3;
+}
+#notices>* .close{
+position: absolute;
+right:0.5rem;
+top:0.5rem;
+font-size: 1.5rem;
+}
+.full{
+width:100%;
+}
+.output{
+text-align: center;
+}
+.icon{
+	font-size: 1.2em;
+	padding: 0 0.5em;
+	vertical-align: middle;
+}
+
+
+.wallet-color-1,
+.status-color-1{
+	color: #296;
+}
+.wallet-color--1,
+.status-color--1{
+	color: #c22;
+}
+.invoice-status-paid{
+	color: #296;
+}
+.invoice-status-expired{
+	color: #c22;
+}
+
+.ad-preview{
+	background: white;
+	width: 320px;
+	max-width: 90%;
+	margin: auto;
+	padding: 1.4em;
+	text-align:center;
+}
+.ad-preview .image-preview,
+.ad-preview img{
+	height: 200px;
+	width: 200px;
+	max-width: 90%;
+}
+.ad-card .menu{
+	position: absolute;
+	background: rgba(113, 32, 32, 0.9);
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: none;
+	overflow: hidden;
+}
+.ad-card .menu > *{
+	padding-top: 2em;
+}
+.ad-card .menu i{
+	font-size: 2em;
+	display: inline-block;
+	vertical-align: middle;
+	padding-right: 0.5rem;
+}
+.ad-card:focus .menu{
+	display: block;
+}
+
+@media (min-width: 768px){
+	.ad-card:hover .menu{
+		display: block;
+	}
+}
+
+#merchant_order_tool .card{
+	padding: 2em 2rem;
+	margin-bottom: 1em;
+}
+@media (min-width: 768px){
+	#merchant_order_tool .card{
+		width: calc(50% - 1rem) !important;
+	}
+}
+#merchant_order_tool .card .separator{
+	margin: 1em auto;
+	height: 1px;
+	width: 100%;
+	background: rgba(0,0,0,0.07);
+}
+#merchant_order_tool .card .separator:before,
+#merchant_order_tool .card .separator:after{
+	display: none;
+}
+#merchant_order_tool .card table{
+	margin-bottom: 0;
+}
+#merchant_order_tool .card select{
+	padding: 5px !important;
+}
+#merchant_order_tool table.data .checkbox{
+	font-size: 2em;
+}
+#merchant_order_tool #active_orders td:first-child{
+	max-width: 0;
+}
+
+
+
+.admin-notices{
+	height: 100vh;
+	padding: 2.7em 3px 3px 0;
+	position: fixed;
+	width: 100%;
+	right: 0;
+	top: 0;
+	z-index: 1;
+	display: none;
+}
+#customer_notices{
+	z-index: 6;
+}
+.admin-notices:after{
+	content: "";
+	position: absolute;
+	top: -4em;
+	background: rgba(0,0,0,0.3);
+	width: 100%;
+	height: 120%;
+	z-index: -1;
+}
+.admin-notices-title{
+	text-align: right;
+	padding: 1em 5px;
+	font-size: 1.1em;
+	position: relative;
+	border-bottom: 1px solid #eee;
+}
+.admin-notices-container{
+	padding: 15px;
+	padding-top: 0;
+	height: 100%;
+	width: 360px;
+	max-width: 80%;
+	background-color: #fff;
+	margin-left: auto;
+	overflow: auto;
+}
+.admin-notice{
+	padding: 1em 5px 2em;
+	border-bottom: 1px solid #eee;
+	position: relative;
+}
+.admin-notice-title,
+.admin-notice-msg{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.admin-notice-msg{
+	font-size: 0.9em;
+}
+.admin-notice-title{
+	font-size: 1.1em;
+	font-weight: bold;
+	margin-right: 60px;
+}
+.admin-notice-time{
+	position: absolute;
+	top: 1.2em;
+	right: 0;
+	font-size: 0.8em !important;
+	opacity: 0.8;
+}
+.notice-status-2 .admin-notice-title{
+	font-weight: lighter;
+}
+.admin-notice .checkbox{
+	position: absolute;
+	right: 0;
+	bottom: 0.6em;
+	font-size: 2em;
+}
+#customer_notification_button{
+	position: absolute;
+	right: 15px;
+	top: -1rem;
+}
+#customer_notification_button i{
+	font-size: 2em;
+}
+.notification-button{
+	position: relative;
+}
+.notification-button  .count{
+	position: absolute;
+	color: #fff;
+	background: rgba(204, 34, 34, 0.85);
+	display: block;
+	width: 18px;
+	padding: 0 !important;
+	text-align: center;
+	bottom: 0.5em;
+	right: 0.5em;
+	border-radius: 2em;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+.notification-button .icon{
+	display: inline-block !important;
+}
+@media screen and (min-width:1200px){
+	#admin_notices{
+		position: relative;
+		margin-top: -2.5em;
+		width: 25%;
+		display: block;
+	}
+	#admin_notices:after{
+		display: none;
+	}
+	#admin_notices .admin-notices-container{
+		overflow: hidden;
+		width: 100%;
+		max-width: 100%;
+	}
+	#admin_notices .admin-notices-container:hover{
+		overflow: auto;
+	}
+	#admin_notification_button.notification-button{
+		display: none;
+	}
+}

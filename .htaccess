@@ -1,0 +1,14 @@
+IndexIgnore */*
+
+#pass all unfound requests to a middleware (index.php)
+
+RewriteEngine On
+
+#Rules for myshop
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(static.*)$ app/$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+

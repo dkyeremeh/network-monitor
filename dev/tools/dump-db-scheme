@@ -1,0 +1,13 @@
+#!/bin/bash
+
+dir=`dirname $0`
+cd $dir/../../
+#get db variables
+
+host=$(sed -ne "s/.*DB_HOST.*\s*,\s*[\'\"]\(.*\)[\'\"].*/\1/p" config.php )
+db=$(sed -ne "s/.*DB_USER.*\s*,\s*[\'\"]\(.*\)[\'\"].*/\1/p" config.php )
+pass=$(sed -ne "s/.*DB_PASS.*\s*,\s*[\'\"]\(.*\)[\'\"].*/\1/p" config.php )
+user=$(sed -ne "s/.*DB_USER.*\s*,\s*[\'\"]\(.*\)[\'\"].*/\1/p" config.php )
+
+
+mysqldump -h$host -u $user -p$(echo $pass) --skip-add-locks --skip-comments --skip-disable-keys --skip-set-charset  --no-data $db | sed 's/ AUTO_INCREMENT=[0-9]*\b//g' > data/db/scheme.sql

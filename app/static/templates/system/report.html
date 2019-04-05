@@ -1,0 +1,79 @@
+<form ng-controller="reportCtrl" no-autoload ng-submit="viewReport()">
+
+	<div class="tool-nav">
+		<select ng-model="options.dev_serv" class="full-width">
+			<option value="">Select Device/Service</option>
+			<option ng-repeat="d in dev_serv | orderBy : 'name'" value="{{d.id}}">{{d.name}}</option>
+		</select>
+	</div>
+	<div class="br"></div>
+	<div ng-show="options.dev_serv">
+		<div class="row">
+			<div class="col-xs-12 col-sm-5">
+				<input
+					class="full-width"
+					ng-model="options.from"
+					placeholder="Start from"
+					datetime-picker
+					date-format="yyyy-MM-dd"
+					date-only
+					title=
+				/>
+			</div>
+			<div class="col-xs-12 col-sm-5">
+				<input
+					class="full-width"
+					ng-model="options.to"
+					placeholder="End at"
+					datetime-picker
+					date-format="yyyy-MM-dd"
+					date-only
+				/>
+			</div>
+			<div class="col-xs-12 col-sm-2">
+				<button type="submit" class="full-width">View</button>
+			</div>
+		</div>
+		
+	</div>
+
+	<div ng-show="report" style="margin: 2em 0;">
+		<h3 class="padding-v text-center">{{ report.dev_serv.name }} Report</h3>
+
+		<table class="data">
+			<tr><th colspan="2" class="bold text-center">Summary</th></tr>
+			<tr>
+				<th>Report Period</th>
+				<td><strong>{{ report.start * 1000| date : "MMM dd @ HH:mm" }}</strong> to <strong>{{ report.end * 1000| date : "MMM dd @ HH:mm" }}</strong></td>
+			</tr>
+			<tr class="color-red">
+				<th>Total Downtime</th>
+				<td>{{ report.downtime | formatSecs}}</td>
+			</tr>
+			<tr class="color-green">
+				<th>Total Uptime</th>
+				<td>{{ report.uptime | formatSecs }}</td>
+			</tr>
+		</table>
+
+		<h4 class="padding-v text-center">Downtime</h4>
+
+		<table class="data">
+			<thead>
+				<tr class="bold">
+					<th>Duration</th>
+					<th class="color-red">From</th>
+					<th class="color-green">To</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="d in report.downtimes" ng-init="duration = d.end - d.start">
+					<td>{{ duration | formatSecs }}</td>
+					<td class="color-red">{{ d.start * 1000 | date : "MMM dd @ HH:mm" }}</td>
+					<td class="color-green">{{ d.end * 1000 | date : duration <= 6 * 3600 ? "H:mm" : "MMM dd @ HH:mm" }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</form>

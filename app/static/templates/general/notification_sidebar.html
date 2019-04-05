@@ -1,0 +1,12 @@
+<div class="admin-notices-container">
+	<h5 class="admin-notices-title"><a href="#/notification">NOTIFICATIONS</a></h5>
+	<div class="admin-notice notice-status-{{n.status}}" ng-repeat="n in notification | filter:{status:'!2' } | orderBy:'-delivery_time' ">
+		<h5 class="admin-notice-title">
+			<a href="#/notification/n{{n.id}}" >{{n.title}}</a>
+		</h5>
+		<div class="admin-notice-msg">{{n.msg}}</div>
+		<div class="admin-notice-time">
+			<div>{{n.delivery_time|simpleTime}}</div>
+		</div>
+	</div>
+</div>
