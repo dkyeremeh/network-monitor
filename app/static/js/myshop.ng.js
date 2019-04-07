@@ -15,13 +15,13 @@ angular.module('myshop',["dekyfin.ui", "ui.router", "angular.filter", "angularjs
 				.state('tool',{
 					url: '/:tool',
 					templateUrl: function($stateParams){
-						return siteInfo.staticBase + "/templates/" + vars.module + "/" + $stateParams.tool;
+						return siteInfo.staticBase + "/templates/" + vars.module + "/" + $stateParams.tool + ".html";
 					},
 				})
 				.state('subtool',{
 					url: '/:tool/:subtool',
 					templateUrl: function($stateParams){
-						return siteInfo.staticBase + "/templates/" + vars.module + "/" + $stateParams.tool ;
+						return siteInfo.staticBase + "/templates/" + vars.module + "/" + $stateParams.tool + ".html";
 					},
 				})
 			$urlRouterProvider.otherwise('/dashboard');
