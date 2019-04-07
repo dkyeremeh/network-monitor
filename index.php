@@ -1,7 +1,5 @@
 <?php
 
-error_reporting( E_ERROR | E_WARNING | E_PARSE);
-
 $GEN_ROOT = __DIR__;
 
 //Load config files
