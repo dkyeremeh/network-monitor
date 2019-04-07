@@ -2,7 +2,6 @@
 	"require": {
 		"zendframework/zend-captcha": "^2.7",
 		"smarty/smarty": "~3.1",
-		"simpletest/simpletest": "^1.1",
 		"zendframework/zend-validator": "^2.10",
 		"zendframework/zend-text": "^2.6",
 		"zendframework/zend-session": "^2.8",

@@ -1,11 +1,14 @@
 <?php
 
 //apcu to apc emulator
-if(! function_exists("apc_add") )
+if(! function_exists("apc_add") ){
 	require_once dirname( __FILE__ ) . "/apc_shim.php";
+}
 
-if(!$GEN_ROOT)
+if(!$GEN_ROOT){
 	require_once dirname( __FILE__ ) . "/../config.php";
+}
+
 function gen_autoload($class){
 	global $AUTOLOAD;
 	$_class = strtolower($class);
