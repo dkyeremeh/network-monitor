@@ -2,7 +2,7 @@
 # http://git-scm.com/docs/gitignore
 
 app/static/js/config.js
-app/static/js/min.js
+# app/static/js/min.js
 /app/options.json
 
 node_modules/

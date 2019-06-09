@@ -2,6 +2,7 @@
 	<form id="add_entry" ng-submit="save(data)">
 
 		<div class="row">
+			<!-- Notification Settings -->
 			<div class="form-group col-xs-8">
 
 				<div class="form-caption br">Notification Channel(s)</div>
@@ -19,14 +20,54 @@
 			<label class="form-group col-xs-12">
 				<span class="form-caption">Notification Email</span>
 				
-				<input type="email" ng-model="data.notify.alertEmail" ng-required="data.notify.email"/>
+				<input type="email" ng-model="data.notify.alertEmail" ng-disabled="!data.notify.email" ng-required="data.notify.email"/>
 			</label>
 
 			<label class="form-group col-xs-12">
-				<span class="form-caption">Notification Phone</span>
+				<span class="form-caption">Notification Phone Number</span>
 				<input type="tel" ng-model="data.notify.alertPhone"  ng-required="data.notify.sms" ng-disabled="!data.notify.sms"/>
 			</label>
+			<!-- End Notification Settings -->
 
+
+			<!-- SMTP Settings -->
+			<div class="br col-xs-12"></div>
+			<h4 class="col-xs-12">Email Settings</h4>
+
+			<label class="form-group col-sm-6">
+				<span class="form-caption">SMTP Server</span>
+				<input type="text" ng-model="data.smtp.server" ng-disabled="!data.notify.email" ng-required="data.notify.email"/>
+			</label>
+
+			<label class="form-group col-sm-3">
+				<span class="form-caption">SMTP Port</span>
+				<input type="number" min="1" ng-model="data.smtp.port" ng-disabled="!data.notify.email" ng-required="data.notify.email"/>
+			</label>
+			
+			<label class="form-group col-sm-3">
+				<span class="form-caption">Cert Type</span>
+				<select ng-model="data.smtp.cert" ng-disabled="!data.notify.email" >
+					<option value="">None</option>
+					<option value="ssl">SSL</option>
+					<option value="tls">STARTTLS</option>
+				</select>
+			</label>
+
+			<label class="form-group col-sm-6">
+				<span class="form-caption">SMTP Account</span>
+				<input type="email" ng-model="data.smtp.username" ng-disabled="!data.notify.email" ng-required="data.notify.email"/>
+			</label>
+
+			<label class="form-group col-sm-6">
+				<span class="form-caption">SMTP Password</span>
+				<input type="password" ng-model="data.smtp.password" ng-disabled="!data.notify.email" ng-required="data.notify.email"/>
+			</label>
+			<!--  End SMTP Settings -->
+
+
+			<!-- SMS Settings -->
+			<div class="br col-xs-12"></div>
+			<h4 class="col-xs-12">SMS Settings</h4>
 
 			<label class="form-group col-sm-6">
 				<span class="form-caption">Infobip SMS Username</span>
@@ -37,6 +78,7 @@
 				<span class="form-caption">Infobip SMS Password</span>
 				<input type="password" ng-model="data.infobip.password" ng-disabled="!data.notify.sms" ng-required="data.notify.sms"/>
 			</label>
+			<!-- End SMS Settings -->
 			
 		</div>
 		<div>

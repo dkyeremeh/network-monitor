@@ -1,7 +1,6 @@
 <?php
 
-    namespace DF;
-
+	namespace DF;
 	/*
 		A simple class for reading and writing data
 		
@@ -36,9 +35,18 @@
 		];
 		
 		static function connect(){
+			global $GEN_ROOT;
+
 			if(!self::$con){
-				extract (self::$db);
-				self::$con = new \PDO("mysql:host=$host;dbname=$database", $user, $password);
+				// Connect to sqlite
+				if(DB_TYPE === "sqlite"){
+					self::$con = new \PDO("sqlite:$GEN_ROOT/data/db.sqlite");
+				}
+				// Connect to mysql
+				else{
+					extract (self::$db);
+					self::$con = new \PDO("mysql:host=$host;dbname=$database", $user, $password);
+				}
 				
 				self::$con->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION );
 				self::$con->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);

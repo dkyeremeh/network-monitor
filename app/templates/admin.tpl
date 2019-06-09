@@ -2,9 +2,9 @@
 <html ng-controller="mainCtrl" class="bg-white" lang="en-US">
 <head>
 	<meta charset="UTF-8" />
-	{literal}
-	<title ng-bind-template="{{title}} | Network Monitor {{account.module|uppercase}}">Home | Network Monitor </title>
-	{/literal}
+	
+	<title ng-bind-template="{literal}{{title}}{/literal} | {$SITE_INFO.name} {literal}{{account.module|uppercase}}{/literal}">Home | {$SITE_INFO.name} </title>
+	
 	<link type="image/png" rel="icon" href="{$SITE_INFO.static_base}/img/favicon.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link type="text/css" rel="stylesheet" href="{$SITE_INFO.static_base}/css/min.css" />
@@ -12,7 +12,7 @@
 	{block name="head"}
 	<!--script type="text/javascript" src="{$SITE_INFO.static_base}/modules/tinymce/tinymce.min.js"></script-->
 	<!-- tinymce cdn. Replaces above script during production -->
-	<script type="text/javascript"  src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+	<!--<script type="text/javascript"  src='//cdn.tinymce.com/4/tinymce.min.js'></script>-->
 	{/block}
 </head>
 
@@ -26,7 +26,7 @@
 					<span id="admin_title" class="hidden-xs" ng-cloak>
 						{literal}
 							{{title}} 
-						{/literal}
+						{/literal} - {$SITE_INFO.name}
 					</span>
 				</li>
 				{foreach $menu as $item}

@@ -6,10 +6,21 @@ $cron->add( 'check-status', [
 	'enabled' => true,
 	'function' => function() {
 
+		global $OPTIONS;
+
 		$statusChanges = [];	// List of divice id and their new stutus'
 		$message = "";
 
 		$dev_serv = DF\DB::load("dev_serv");
+
+		// Ping command for various platforms
+		switch(PHP_OS){
+			case "Windows":
+				$ping = "ping ";
+				break;
+			default:
+				$ping = "ping -c1 ";
+		}
 
 		// Check running services and save status changes to $statusChanges
 		foreach ($dev_serv as $s){
@@ -22,7 +33,7 @@ $cron->add( 'check-status', [
 			}
 			else{
 				// TODO: Different variant for windows
-				@exec("ping -c1 $s[address]", $output, $error);
+				@exec("$ping $s[address]", $output, $error);
 				$status = $error ? 0 : 1;
 			}
 

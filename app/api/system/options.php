@@ -12,7 +12,7 @@ function edit($values){
 	global $ROOT;
 	extract($values);
 	// Save fields
-	$allowed = ["notify","infobip"];
+	$allowed = ["notify","infobip", "smtp"];
 	
 	$options = json_encode( compact($allowed) );
 	file_put_contents("$ROOT/options.json", $options);

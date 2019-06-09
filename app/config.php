@@ -1,5 +1,16 @@
 <?php
 
+
+require_once("$GEN_ROOT/vendor/autoload.php");
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Monolog\Handler\FirePHPHandler;
+
+$LOG = new Logger('app');
+$LOG->pushHandler(new StreamHandler("$GEN_ROOT/data/app.log", Logger::DEBUG));
+$LOG->pushHandler(new FirePHPHandler());
+
 $AUTOLOAD[] = dirname (__FILE__) . "/classes";
 
 $GEN_ROUTES = [
@@ -39,6 +50,7 @@ $GEN_ROUTES = [
 if( file_exists("$ROOT/options.json") ){
 	
 	$OPTIONS = json_decode(
-		file_get_contents("$ROOT/options.json")
+		file_get_contents("$ROOT/options.json"),
+		true
 	);
 }

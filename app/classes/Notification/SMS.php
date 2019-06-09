@@ -3,7 +3,7 @@
 namespace Notification;
 
 class SMS{
-	function send($to, $text, $from=SITE_NAME){
+	function send($to, $text){
 		global $OPTIONS;
 
 		//InfoBib

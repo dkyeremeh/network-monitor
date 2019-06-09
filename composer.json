@@ -1,10 +1,12 @@
 {
 	"require": {
 		"zendframework/zend-captcha": "^2.7",
-		"smarty/smarty": "~3.1",
+		"smarty/smarty": "^3.1",
 		"zendframework/zend-validator": "^2.10",
 		"zendframework/zend-text": "^2.6",
 		"zendframework/zend-session": "^2.8",
-		"mtdowling/cron-expression": "^1.2"
+		"mtdowling/cron-expression": "^1.2",
+		"monolog/monolog": "^1.24",
+		"phpmailer/phpmailer": "^6.0"
 	}
 }

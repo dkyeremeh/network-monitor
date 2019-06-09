@@ -2,7 +2,7 @@
 <html ng-controller="mainCtrl" lang="en-US">
 	<head>
 	<meta charset="UTF-8" />
-	<title>Network Device Monitor</title>
+	<title>{$SITE_INFO.name}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link type="text/css" rel="stylesheet" href="{$SITE_INFO.static_base}/css/min.css" />
 	<link type="image/png" href="{$SITE_INFO.static_base}/img/favicon.png" rel="shortcut icon" />
@@ -23,6 +23,12 @@
 	</head>
 
 <body class="client-{$CLIENT}">
+
+	<header id="titlebar" class="clear">
+		<div class="container">
+			<div class="menu">{$SITE_INFO.name}</div>
+		</div>
+	</header>
 
 	<div id="content" class="site-content">
 		{block name="title"}

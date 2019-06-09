@@ -34,7 +34,7 @@ select, .select
 textarea {
 	color: #404040;
 	font-size: 15px;
-	font-family: raleway, roboto, helvetica;
+	font-family: raleway, roboto, ubuntu, helvetica;
 	line-height: 1.5;
 	outline: 0;
 	box-shadow: none;
@@ -663,7 +663,6 @@ body.client-ionic #masthead .navbar{
 
 #titlebar{
 	font-size: 14px;
-	background: #f1f1f1;
 	position: relative;
 	z-index: 7;
 	line-height: 100%;

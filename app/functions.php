@@ -26,7 +26,7 @@ Events::add_action("admin_login", "load_admin_access");
 function load_admin_access($user){
 	//Load tools for the module
 	$table = "admin_tools";
-	$query = "SELECT tools.title, tools.tool, tools.icon_class FROM access_control RIGHT JOIN tools
+	$query = "SELECT tools.title, tools.tool, tools.icon_class FROM access_control JOIN tools
 		on access_control.tool = tools.tool AND access_control.module = tools.module
 		WHERE `role`= :role AND tools.`module` = :module ORDER BY `order`";
 	$values = [
