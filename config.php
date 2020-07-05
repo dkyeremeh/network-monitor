@@ -1,7 +1,10 @@
 <?php
+
+use Illuminate\Database\Capsule\Manager as Capsule;
+
 //Set framework root
 if (!isset($ROOT)) {
-    $ROOT = dirname(__FILE__);
+    $ROOT = __DIR__;
 }
 
 //Set project root
@@ -20,6 +23,12 @@ if (!isset($AUTOLOAD) || gettype($AUTOLOAD) != "array") {
 
 $AUTOLOAD[] = "$ROOT/classes";
 
-require_once __DIR__ . "/app/config.php";
-require_once __DIR__ . "/functions/base.php";
-require_once __DIR__ . "/app/functions.php";
+require_once "$ROOT/functions/base.php";
+require_once "$APP_ROOT/config.php";
+require_once "$APP_ROOT/functions.php";
+$db = require_once "$ROOT/database.php";
+
+$capsule = new Capsule();
+$capsule->addConnection($db["connections"][$db["default"]]);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();

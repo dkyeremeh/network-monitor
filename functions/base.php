@@ -95,44 +95,57 @@ function get_controller($target, $CAPTURE=[]){
 }
 
 function check_cache($cacheOptions, $template){
-	global $route;
-	$cacheOptions[0] = $route["controller"];
-	
-	//Load item from cache if it exist else disable cache
-	define("CACHE_ID",  crc32 ( serialize($cacheOptions ? $cacheOptions : DF\Request::$url) ) );
-	
-	$smarty = load_smarty();
-	$smarty->setCaching(Smarty::CACHING_LIFETIME_CURRENT);
-	
-	if(apc_exists("CACHE_" .  CACHE_ID)){
-		$cache_template = apc_fetch("CACHE_" .  CACHE_ID);
-		 if( $smarty->isCached("$cache_template.tpl", CACHE_ID) ){
-			$smarty->display("$cache_template.tpl",  CACHE_ID);
-			exit();
-		 }
-	}
+    global $route;
+    $cacheOptions[0] = $route["controller"];
+
+    //Load item from cache if it exist else disable cache
+    define("CACHE_ID", crc32(serialize($cacheOptions ? $cacheOptions : DF\Request::$url)));
+
+    $smarty = load_smarty();
+    $smarty->setCaching(Smarty::CACHING_LIFETIME_CURRENT);
+
+    if (apc_exists("CACHE_" . CACHE_ID)) {
+        $cache_template = apc_fetch("CACHE_" . CACHE_ID);
+        if ($smarty->isCached("$cache_template.tpl", CACHE_ID)) {
+            $smarty->display("$cache_template.tpl", CACHE_ID);
+            exit();
+        }
+    }
 }
+
 
 function create_password($password){
 	global $create_password_count;
-	
-	$salt = '$2x$07$' . md5( mcrypt_create_iv(10) );
-	$pwd = crypt($password, $salt);
 
-	if(strlen($pwd) < 6 && $create_password_count++ < 10){
+	$salt = '$2x$07$' . md5(mcrypt_create_iv(10));
+	$pwd  = crypt($password, $salt);
+
+	if (strlen($pwd) < 6 && $create_password_count++ < 10) {
 		$pwd = create_password($password);
 	}
 	return $pwd;
+
 }
 
 function trim_recursive($r){
-	if(!is_array($r))
+	if (!is_array($r)) {
 		return $r;
-	foreach($r as $key=>$val){
-		if(gettype($val) == "string" )
+	}
+	foreach ($r as $key => $val) {
+		if (gettype($val) == "string") {
 			$r[$key] = trim($val);
-		else if(gettype($val) == "string" )
+		} else if (gettype($val) == "array") {
 			$r[$key] = trim_recursive($val);
+		}
 	}
 	return $r;
+}
+
+/**
+ * @param string $key
+ * @param string $default
+ * @return mixed
+ */
+function denv($key, $default=null){
+	return isset($_ENV[$key]) ?  $_ENV[$key] : $default;
 }
