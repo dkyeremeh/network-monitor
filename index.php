@@ -18,9 +18,6 @@ if(file_exists("$GEN_ROOT/app/functions.php"))
 //Execute init event functions
 Events::call_action("init");
 
-//Load Firewall
-require_once "$GEN_ROOT/firewall.php";
-	
 //Load Routes
 
 foreach($GEN_ROUTES as $route){
