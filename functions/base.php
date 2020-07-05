@@ -5,7 +5,7 @@ if(! function_exists("apc_add") ){
 	require_once dirname( __FILE__ ) . "/apc_shim.php";
 }
 
-if(!$GEN_ROOT){
+if(!$ROOT){
 	require_once dirname( __FILE__ ) . "/../config.php";
 }
 
@@ -29,18 +29,18 @@ spl_autoload_register("gen_autoload");
 
 //Templating functions
 function load_smarty(){
-	global $GEN_OPTIONS, $GEN_ROOT, $GEN_VARS;
-	if(!isset($GEN_VARS["smarty"])){
+	global $OPTIONS, $ROOT, $VARS;
+	if(!isset($VARS["smarty"])){
 		
 		$smarty = new Smarty;
-		$smarty->setTemplateDir("$GEN_ROOT/app/templates/");
-		$smarty->setCompileDir("$GEN_ROOT/data/compiled");
-		$smarty->setCacheDir("$GEN_ROOT/data/cache/smarty");
-		$smarty->setConfigDir("$GEN_ROOT/modules/smarty/config");
-		$smarty->addPluginsDir("$GEN_ROOT/functions/smarty_plugins");
-		$GEN_VARS["smarty"] = $smarty;
+		$smarty->setTemplateDir("$ROOT/app/templates/");
+		$smarty->setCompileDir("$ROOT/data/compiled");
+		$smarty->setCacheDir("$ROOT/data/cache/smarty");
+		$smarty->setConfigDir("$ROOT/modules/smarty/config");
+		$smarty->addPluginsDir("$ROOT/functions/smarty_plugins");
+		$VARS["smarty"] = $smarty;
 	}
-	return $GEN_VARS["smarty"];
+	return $VARS["smarty"];
 }
 function get_template($target, $vars=[]){
 	global $SITE_INFO;
@@ -82,10 +82,10 @@ function get_sidebar($name){
 
 //controller Logic
 function get_controller($target, $CAPTURE=[]){
-	global $GEN_OPTIONS, $GEN_ROOT, $ROOT;
+	global $OPTIONS, $ROOT, $APP_ROOT;
 	$dirs = [];
-	$dirs[] = "$GEN_ROOT/app/controllers";
-	$dirs[] = "$GEN_ROOT/controllers";
+	$dirs[] = "$ROOT/app/controllers";
+	$dirs[] = "$ROOT/controllers";
 	
 	$target = str_replace(".php","", $target);
 	foreach($dirs as $dir){		

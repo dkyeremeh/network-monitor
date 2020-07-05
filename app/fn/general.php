@@ -16,9 +16,9 @@ function dir_count($dir){
 }
 
 function call_api($path, $data=[]){
-	global $ROOT;
+	global $APP_ROOT;
 
-	chdir ($ROOT);
+	chdir ($APP_ROOT);
 
 	$data = trim_recursive($data);
 	$ROUTES = [];

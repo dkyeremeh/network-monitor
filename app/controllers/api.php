@@ -65,7 +65,7 @@ if($res === false){
 exit();
 
 /*
-chdir ($ROOT);
+chdir ($APP_ROOT);
 
 $ROUTES = [];
 $curPath = "." . DF\Request::$path;

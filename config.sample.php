@@ -1,34 +1,37 @@
 <?php
 
 //Set framework root
-if(!isset($GEN_ROOT))
-	$GEN_ROOT = dirname(__FILE__);
+if (!isset($ROOT)) {
+    $ROOT = dirname(__FILE__);
+}
+
 //Set project root
-if(!isset($PROJECT_ROOT))
-	$ROOT= "$GEN_ROOT/app";
+if (!isset($PROJECT_ROOT)) {
+    $APP_ROOT = "$ROOT/app";
+}
 
-if(!isset($AUTOLOAD) || gettype($AUTOLOAD) != "array")
-	$AUTOLOAD = [];
-
+if (!isset($AUTOLOAD) || gettype($AUTOLOAD) != "array") {
+    $AUTOLOAD = [];
+}
 
 //BASIC SITE CONFIG (SERVER DEPENDENT)
 $SITE_INFO = [
-	"name" => "Network Devices Monitor",	//Name of app
-	"base" => "{sub.domain.com}", // FQDN of app
-	"static_base" => "/app/static",
+    "name"        => "Network Devices Monitor", //Name of app
+    "base"        => "{sub.domain.com}", // FQDN of app
+    "static_base" => "/app/static",
 ];
 
 //AUTOLOAD
-$AUTOLOAD[] = "$GEN_ROOT/classes";
-// $AUTOLOAD[] = "$GEN_ROOT/modules/smarty/sysplugins";
-// $AUTOLOAD[] = "$GEN_ROOT/modules";
+$AUTOLOAD[] = "$ROOT/classes";
+// $AUTOLOAD[] = "$ROOT/modules/smarty/sysplugins"
+// $AUTOLOAD[] = "$ROOT/modules"
 
 //DATABASE
 define("DB_TYPE", "mysql");
 define("DB_PREFIX", "gen_");
-define("DB_HOST", "{VALUE}" );
-define("DB_USER", "{VALUE}" );
-define("DB_NAME", "{VALUE}" );
+define("DB_HOST", "{VALUE}");
+define("DB_USER", "{VALUE}");
+define("DB_NAME", "{VALUE}");
 define("DB_PASS", "{VALUE}");
 
 //CACHE
