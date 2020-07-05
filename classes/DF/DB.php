@@ -35,12 +35,12 @@
 		];
 		
 		static function connect(){
-			global $ROOT;
+			global $GEN_ROOT;
 
 			if(!self::$con){
 				// Connect to sqlite
 				if(DB_TYPE === "sqlite"){
-					self::$con = new \PDO("sqlite:$ROOT/data/db.sqlite");
+					self::$con = new \PDO("sqlite:$GEN_ROOT/data/db.sqlite");
 				}
 				// Connect to mysql
 				else{

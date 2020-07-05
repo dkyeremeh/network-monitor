@@ -1,19 +1,19 @@
 <?php
 
 
-require_once("$ROOT/vendor/autoload.php");
+require_once("$GEN_ROOT/vendor/autoload.php");
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\FirePHPHandler;
 
 $LOG = new Logger('app');
-$LOG->pushHandler(new StreamHandler("$ROOT/data/app.log", Logger::DEBUG));
+$LOG->pushHandler(new StreamHandler("$GEN_ROOT/data/app.log", Logger::DEBUG));
 $LOG->pushHandler(new FirePHPHandler());
 
 $AUTOLOAD[] = dirname (__FILE__) . "/classes";
 
-$ROUTES = [
+$GEN_ROUTES = [
 	'Admin Login' => [
 		'pattern' => '$',
 		'controller' => 'login',
