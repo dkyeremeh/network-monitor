@@ -1,6 +1,6 @@
 <?php
 
-$APP_ROOT = __DIR__;
+$ROOT = __DIR__;
 
 //Load config files
 require_once "$ROOT/config.php";

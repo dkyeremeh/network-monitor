@@ -2,12 +2,9 @@
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-//Set framework root
 if (!isset($ROOT)) {
     $ROOT = __DIR__;
 }
-
-//Set project root
 if (!isset($PROJECT_ROOT)) {
     $APP_ROOT = "$ROOT/app";
 }
@@ -32,3 +29,8 @@ $capsule = new Capsule();
 $capsule->addConnection($db["connections"][$db["default"]]);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
+
+define("DB_HOST", $_ENV["DB_HOST"] );
+define("DB_USER", $_ENV["DB_USERNAME"] );
+define("DB_NAME", $_ENV["DB_DATABASE"] );
+define("DB_PASS", $_ENV["DB_PASSWORD"]);
