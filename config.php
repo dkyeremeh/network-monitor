@@ -10,7 +10,9 @@ if (!isset($PROJECT_ROOT)) {
 }
 
 require_once "$ROOT/vendor/autoload.php";
-$dotenv = Dotenv\Dotenv::createImmutable($ROOT);
+
+// Load environmental variables
+Dotenv\Dotenv::createImmutable($ROOT)->load();
 
 if (!isset($AUTOLOAD) || gettype($AUTOLOAD) != "array") {
     $AUTOLOAD = [];
