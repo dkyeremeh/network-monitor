@@ -2,11 +2,11 @@
 <html ng-controller="mainCtrl" lang="en-US">
 	<head>
 	<meta charset="UTF-8" />
-	<title>{$SITE_INFO.name}</title>
+	<title>{$_ENV.SITE_NAME}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link type="text/css" rel="stylesheet" href="{$SITE_INFO.static_base}/css/min.css" />
-	<link type="image/png" href="{$SITE_INFO.static_base}/img/favicon.png" rel="shortcut icon" />
-	<script type="text/javascript" src="{$SITE_INFO.static_base}/js/min.js"></script>
+	<link type="text/css" rel="stylesheet" href="{$_ENV.STATIC_FILES_URL}/css/min.css" />
+	<link type="image/png" href="{$_ENV.STATIC_FILES_URL}/img/favicon.png" rel="shortcut icon" />
+	<script type="text/javascript" src="{$_ENV.STATIC_FILES_URL}/js/min.js"></script>
 	
 	<meta property="al:android:app_name" content="Network Monitor">
 	<meta property="og:type" content="website" />
@@ -26,7 +26,7 @@
 
 	<header id="titlebar" class="clear">
 		<div class="container">
-			<div class="menu">{$SITE_INFO.name}</div>
+			<div class="menu">{$_ENV.SITE_NAME}</div>
 		</div>
 	</header>
 

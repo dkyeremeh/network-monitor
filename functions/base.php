@@ -43,7 +43,6 @@ function load_smarty(){
 	return $VARS["smarty"];
 }
 function get_template($target, $vars=[]){
-	global $SITE_INFO;
 	//Hooks
 	Events::call_action("before_template", $vars, $target);
 	Events::apply_filter("before_template", $vars);
@@ -53,7 +52,7 @@ function get_template($target, $vars=[]){
 
 	//Assign Values
 	$smarty->assign("_GET", $_GET);
-	$smarty->assign("SITE_INFO", $SITE_INFO);
+	$smarty->assign("_ENV", $_ENV);
 	$smarty->assign($vars);
 	
 	//if template target is set in controller, change target to the value from the controller
