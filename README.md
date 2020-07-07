@@ -1,20 +1,33 @@
 # Network Monitor
 
+The app monitors your online services/devices and sends an email or SMS when any of them go online or offline
+
+## Features
+1. Send SMS or email when device/service is online or offline
+1. Send only one notification till device status changes
+1. Supports multiple users
+1. Device/Service status report
+1. Uses PHP/MySQL (Sqlite, PostGres and MsSQL are coming soon)
+
+## Requirements
+1. PHP >= 7.0
+2. MySQL database (Sqlite, PostGres and MsSQL are coming soon)
+
 ## Installation
-1. Clone this repo to your server
-2. Setup a virtual host on your server such that this app can be accessed with a url *http://sub.domain.com*
-3. Clone `config.sample.php` to `config.php`
-4. Change all placeholder values ( something like {THIS} ) with the values that correspond with your setup environment
-5. Visit *http://sub.domain.com*.
-	default credentials is netmon: Security86
+1. Download/clone this repo to your server
+1. `cd` into the app and run `composer install`
+1. Setup a virtual host on your server such that this app can be accessed with a url *http://sub.domain.com*
+1. Clone `.env.example` to `.env` and change values to correspond with your setup environment
+1. Visit *http://sub.domain.com*.
+	default credentials is *`netmon`*: *`Security86`*
 
 Note: If the app will be used on a local network, the virtual host should be setup on a unique port so the app can be accessed on *http://ipaddress:port*
 
-## Setup MySQL
+## Setup Database
 1. Install MySQL
 2. Create a database in MySQL
-3. Set `DB_TYPE` option in `config.php` to `mysql`
-4. Create a database and save the information in `config.php`
+3. Set `DB_CONNECTION` option in `.env` to `mysql`
+4. Create a database and save the information in `.env`
 5. Import `dev/data/scheme.sql` and `dev/data/data.sql` into your database
 
 ## Monitoring Script
@@ -29,4 +42,10 @@ The file `monitor.php` is responsible for monitoring devices and saving the devi
    Do not forget to replace {PATH/TO/THIS/FOLDER} with the actual path on your computer
 
 ### Windows
-1. 
+Not yet tested (Contributions are welcome)
+
+## ROADMAP
+- Support for multiple databases
+- Email queuing (for reliability)
+- Support for multiple SMTP servers (to ensure emails are sent)
+- Run script when device/service goes online/offline (useful for restarting service, etc)
