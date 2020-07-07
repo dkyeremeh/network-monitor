@@ -9,12 +9,17 @@ The app monitors your online services/devices and sends an email or SMS when any
 1. Device/Service status report
 1. Uses PHP/MySQL (Sqlite, PostGres and MsSQL are coming soon)
 
+## Requirements
+1. PHP >= 7.0
+2. MySQL database (Sqlite, PostGres and MsSQL are coming soon)
+
 ## Installation
-1. Clone this repo to your server
+1. Download/clone this repo to your server
+1. `cd` into the app and run `composer install`
 1. Setup a virtual host on your server such that this app can be accessed with a url *http://sub.domain.com*
 1. Clone `.env.example` to `.env` and change values to correspond with your setup environment
 1. Visit *http://sub.domain.com*.
-	default credentials is `netmon`: `Security86`
+	default credentials is *`netmon`*: *`Security86`*
 
 Note: If the app will be used on a local network, the virtual host should be setup on a unique port so the app can be accessed on *http://ipaddress:port*
 
@@ -43,4 +48,4 @@ Not yet tested (Contributions are welcome)
 - Support for multiple databases
 - Email queuing (for reliability)
 - Support for multiple SMTP servers (to ensure emails are sent)
-- Run script when device/service goes online/offline (useful for restarting app, etc)
+- Run script when device/service goes online/offline (useful for restarting service, etc)
