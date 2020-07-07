@@ -62,5 +62,5 @@
 	}
 
 	//set cache directory
-	global $GEN_ROOT;
-	Cache::$dir = "$GEN_ROOT/data/cache";
+	global $APP_ROOT;
+	Cache::$dir = "$ROOT/data/cache";

@@ -3,14 +3,14 @@
 <head>
 	<meta charset="UTF-8" />
 	
-	<title ng-bind-template="{literal}{{title}}{/literal} | {$SITE_INFO.name} {literal}{{account.module|uppercase}}{/literal}">Home | {$SITE_INFO.name} </title>
+	<title ng-bind-template="{literal}{{title}}{/literal} | {$_ENV.SITE_NAME} {literal}{{account.module|uppercase}}{/literal}">Home | {$_ENV.SITE_NAME} </title>
 	
-	<link type="image/png" rel="icon" href="{$SITE_INFO.static_base}/img/favicon.png" />
+	<link type="image/png" rel="icon" href="{$_ENV.STATIC_FILES_URL}/img/favicon.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link type="text/css" rel="stylesheet" href="{$SITE_INFO.static_base}/css/min.css" />
-	<script type="text/javascript" src="{$SITE_INFO.static_base}/js/min.js"></script>
+	<link type="text/css" rel="stylesheet" href="{$_ENV.STATIC_FILES_URL}/css/min.css" />
+	<script type="text/javascript" src="{$_ENV.STATIC_FILES_URL}/js/min.js"></script>
 	{block name="head"}
-	<!--script type="text/javascript" src="{$SITE_INFO.static_base}/modules/tinymce/tinymce.min.js"></script-->
+	<!--script type="text/javascript" src="{$_ENV.STATIC_FILES_URL}/modules/tinymce/tinymce.min.js"></script-->
 	<!-- tinymce cdn. Replaces above script during production -->
 	<!--<script type="text/javascript"  src='//cdn.tinymce.com/4/tinymce.min.js'></script>-->
 	{/block}
@@ -26,7 +26,7 @@
 					<span id="admin_title" class="hidden-xs" ng-cloak>
 						{literal}
 							{{title}} 
-						{/literal} - {$SITE_INFO.name}
+						{/literal} - {$_ENV.SITE_NAME}
 					</span>
 				</li>
 				{foreach $menu as $item}

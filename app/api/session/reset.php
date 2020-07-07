@@ -1,5 +1,4 @@
 <?php
-global $SITE_INFO;
 
 //extract variable
 extract($_POST);
@@ -60,6 +59,6 @@ A password request was made for your account. Use the link below to complete the
 
 $msg_extra
 
-$SITE_INFO[base]/$module/reset/$token
+$_ENV[SITE_URL]/$module/reset/$token
 MSG;
 Notification\Email::send($user["email"], "Password Reset | Network Monitor", Parsedown::instance()->text($msg) );

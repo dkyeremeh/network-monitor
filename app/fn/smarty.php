@@ -32,10 +32,10 @@ function accountStatusJS($params){
 }
 
 function getClientTemplate($id){
-	global $ROOT;
+	global $APP_ROOT;
 	if(gettype($id) == "array" )
 		$id = $id["id"];
 	$path = "/templates/$id";
-	include "$ROOT/static/index.php";
+	include "$APP_ROOT/static/index.php";
 }
 function display_widget($params){}

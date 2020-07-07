@@ -13,7 +13,7 @@ class Email{
 	
 	static function send($d, $t, $m, $options = []){
 
-		global $OPTIONS, $SITE_INFO;
+		global $OPTIONS;
 		
 		//prepare and sanitize email list
 		if(gettype($d)!=="array"){
@@ -59,7 +59,7 @@ class Email{
 			$mail->Port       = $OPTIONS["smtp"]["port"];                                    // TCP port to connect to
 		
 			//Recipients
-			$mail->setFrom( $OPTIONS["smtp"]["username"], $SITE_INFO["name"]);
+			$mail->setFrom( $OPTIONS["smtp"]["username"], $_ENV["SITE_NAME"]);
 
 			foreach($d as $a){
 				$mail->addAddress($a);               // Name is optional
@@ -78,7 +78,6 @@ class Email{
 	}
 	
 	static function to_user($account, $title, $msg, $extra=[]){
-		global $SITE_INFO;
 		
 		if( !($email = $extra["email"]) ){
 			$email = \Account::get_users_info( [$account], "email" )  [0]["email"];
@@ -86,7 +85,7 @@ class Email{
 		$msg = \Parsedown::instance()->text( $msg );
 		
 		if($extra["url"])
-			$msg .= "<p><br/><a href='$SITE_INFO[base]/$extra[url]'>Open Manager</a></p>";
+			$msg .= "<p><br/><a href='$_ENV[SITE_URL]/$extra[url]'>Open Manager</a></p>";
 		
 		//Send the mail
 		return static::send( $email, $title, $msg, $extra );

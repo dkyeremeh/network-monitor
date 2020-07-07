@@ -12,7 +12,7 @@ vendor/
 
 
 *.log
-/config.php
+*.env
 
 
 # Packages #

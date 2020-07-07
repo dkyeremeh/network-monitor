@@ -35,18 +35,9 @@
 		];
 		
 		static function connect(){
-			global $ROOT;
-
 			if(!self::$con){
-				// Connect to sqlite
-				if(DB_TYPE === "sqlite"){
-					self::$con = new \PDO("sqlite:$ROOT/data/db.sqlite");
-				}
-				// Connect to mysql
-				else{
-					extract (self::$db);
-					self::$con = new \PDO("mysql:host=$host;dbname=$database", $user, $password);
-				}
+				extract (self::$db);
+				self::$con = new \PDO("mysql:host=$host;dbname=$database", $user, $password);
 				
 				self::$con->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION );
 				self::$con->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
@@ -62,7 +53,7 @@
 				$con = self::connect();
 				return $con->prepare($query);
 			}
-			catch(PDOException $e){
+			catch(\PDOException $e){
 				trigger_error($e->getMessage());
 			}
 		}
@@ -82,7 +73,7 @@
 				else
 					return $stmt;
 			}
-			catch(PDOException $e){
+			catch(\PDOException $e){
 				trigger_error($e->getMessage());
 			}
 		}
@@ -95,7 +86,7 @@
 				else
 					return $res;
 			}
-			catch(PDOException $e){
+			catch(\PDOException $e){
 				trigger_error($e->getMessage());
 			}
 		}

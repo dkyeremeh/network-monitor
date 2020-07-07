@@ -8,12 +8,6 @@ include __DIR__ . "/fn/smarty.php";
 Events::add_action("init", "app_init");
 
 //Pages
-Events::add_action("page_customer_login", "admin_redirect");
-Events::add_action("page_merchant_register", "admin_redirect");
-Events::add_action("page_merchant_register", "merchant_qn_redirect");
-Events::add_action("page_customer_register", "admin_redirect");
-Events::add_action("page_delivery_register", "admin_redirect");
-
 Events::add_filter("before_template", "append_template_vars");
 
 function append_template_vars($vars){
@@ -25,7 +19,6 @@ function append_template_vars($vars){
 Events::add_action("admin_login", "load_admin_access");
 function load_admin_access($user){
 	//Load tools for the module
-	$table = "admin_tools";
 	$query = "SELECT tools.title, tools.tool, tools.icon_class FROM access_control JOIN tools
 		on access_control.tool = tools.tool AND access_control.module = tools.module
 		WHERE `role`= :role AND tools.`module` = :module ORDER BY `order`";

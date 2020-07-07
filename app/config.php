@@ -47,10 +47,10 @@ $ROUTES = [
 ];
 
 
-if( file_exists("$ROOT/options.json") ){
+if( file_exists("$ROOT/data/options.json") ){
 	
 	$OPTIONS = json_decode(
-		file_get_contents("$ROOT/options.json"),
+		file_get_contents("$ROOT/data/options.json"),
 		true
 	);
 }

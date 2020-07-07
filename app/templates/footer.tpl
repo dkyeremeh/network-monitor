@@ -54,12 +54,12 @@
 							</nav>
 						</div>
 						<div class="col-xs-12 col-sm-3 col-md-2">
-							<img src="{$SITE_INFO.static_base}/img/payments.jpg" />
+							<img src="{$_ENV.STATIC_FILES_URL}/img/payments.jpg" />
 						</div>
 						<div class="col-xs-12 col-sm-4 col-md-2">
-							<img src="{$SITE_INFO.static_base}/img/ems.png" />
+							<img src="{$_ENV.STATIC_FILES_URL}/img/ems.png" />
 							<a class="block padding-top" href="https://play.google.com/store/apps/details?id=com.myshopgh.mobile.app" target="_blank">
-								<img src="{$SITE_INFO.static_base}/img/playstore.png" />
+								<img src="{$_ENV.STATIC_FILES_URL}/img/playstore.png" />
 							</a>
 						</div>
 					</div>

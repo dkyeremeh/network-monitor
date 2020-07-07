@@ -9,13 +9,13 @@ function load($post,$params){
 }
 
 function edit($values){
-	global $ROOT;
+	global $APP_ROOT;
 	extract($values);
 	// Save fields
 	$allowed = ["notify","infobip", "smtp"];
 	
 	$options = json_encode( compact($allowed) );
-	file_put_contents("$ROOT/options.json", $options);
+	file_put_contents("$ROOT/data/options.json", $options);
 
 	DF\Response::printSuccess("Settings Saved");
 }

@@ -7,6 +7,8 @@
 		</header>
 		<div id="content" style="padding: 0px 20px 20px">
 			{$message}
+
+			Sent from <a href="{{$_ENV.SITE_URL}}">{{$_ENV.SITE_NAME}}({{$_ENV.SITE_URL}})</a>
 		</div>
 	</div>
 </body>
